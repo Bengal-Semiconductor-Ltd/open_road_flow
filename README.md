@@ -17,7 +17,7 @@ Before installing tools, ensure your system has **basic development libraries** 
 Before proceeding, run the following script to install all required Ubuntu dependencies:
 
 ```bash
-source install_dependencies.sh
+bash install_dependencies.sh
 ```
 
 
@@ -25,14 +25,35 @@ source install_dependencies.sh
 
 Tools such as **Yosys, OpenROAD, KLayout, cocotb and verilator** should be installed from their official repositories, preferably using the **latest stable tagged release**. Installing in `/opt/tools` helps maintain a consistent location and prevents conflicts with system-installed versions. After installation, each tool should be tested to ensure the binaries are functional and accessible.
 
-Note: User can change the installation location if user wants to avoid root location
-
-run the following script to install all tools:
+Run the following script to install all tools (run it with `bash`, do not `source` it):
 
 ```bash
-
-source install_all_tools.sh  
+bash install_all_tools.sh
 ```
+
+Optional settings, passed as environment variables:
+
+| Variable | Default | Meaning |
+|---|---|---|
+| `ROOT_INSTALLATION` | `yes` | `yes` installs to `/opt/tools` and `/opt/modulefiles` with sudo; `no` installs to `~/tools` and `~/modulefiles` |
+| `SRC_DIR` | `$HOME` | Where the tool sources are cloned and built |
+| `JOBS` | `nproc` | Parallel build jobs; lower it if the build runs out of memory (common for OpenROAD on WSL) |
+
+For example, to install into your home directory with 4 build jobs:
+
+```bash
+ROOT_INSTALLATION=no JOBS=4 bash install_all_tools.sh
+```
+
+The script is safe to re-run: it updates existing clones, overwrites modulefiles instead of appending to them, and builds as your user (only the install step uses sudo).
+
+After installation, open a new shell and load every installed tool with:
+
+```bash
+source /opt/tools/env.sh
+```
+
+(use `~/tools/env.sh` when `ROOT_INSTALLATION=no`).
 
 
 ## Module System Setup

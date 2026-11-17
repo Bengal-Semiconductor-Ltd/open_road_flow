@@ -45,3 +45,32 @@ sudo apt install -y mold  # If present at build, needed for run
 sudo apt install -y libgoogle-perftools-dev numactl
 sudo apt install -y autoconf
 sudo apt update
+# ngspice
+sudo apt install -y automake
+sudo apt install -y libtool
+sudo apt install -y libx11-dev
+sudo apt install -y libxaw7-dev
+sudo apt install -y libxmu-dev
+sudo apt install -y libxext-dev
+sudo apt install -y libxft-dev
+sudo apt install -y libfontconfig1-dev
+sudo apt install -y libxrender-dev
+sudo apt install -y libfreetype-dev
+sudo apt install -y libfftw3-dev
+sudo apt install -y libgomp1
+# xschem
+sudo apt install -y tk-dev
+sudo apt install -y libxpm-dev
+sudo apt install -y libxcb1-dev
+sudo apt install -y libx11-xcb-dev
+sudo apt install -y libcairo2-dev
+sudo apt install -y libjpeg-dev
+sudo apt install -y gawk
+sudo apt install -y xterm
+# openvaf
+sudo apt install -y cargo
+sudo apt install -y rustc
+sudo apt install -y llvm-18
+sudo apt install -y llvm-18-dev
+sudo apt install -y libclang-18-dev
+sudo apt install -y clang-18
